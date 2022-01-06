@@ -7,7 +7,14 @@ class DNASamples{
 		dnaSamples = new ArrayList<DNAStrand>();
 	}
 	
-	public void add(int index,String str){
+	DNASamples(String[] str){
+		dnaSamples = new ArrayList<DNAStrand>(str.length);
+		for(int i=0;i<str.length;i++) {
+			addSample(i,str[i]);
+		}
+	}
+	
+	public void addSample(int index,String str){
 		dnaSamples.add(new DNAStrand(index,str));
 	}
 	
@@ -34,6 +41,7 @@ class DNASamples{
 		String str1 = dnaSamples.get(index1).str;
 		String str2 = dnaSamples.get(index2).str;
 		List<Node> ans = new ArrayList<Node>();
+		int found=0;
 		
 		for(int i=0;i<str1.length()-k;i++) {
 			for(int j=str2.length()-1;j>=k;j--) {
@@ -50,8 +58,13 @@ class DNASamples{
 					}
 					if(count >= k) {
 						ans.add(new Node(index1,i,m-1,index2,j,n+1));
+						found = 1;
+						break;
 					}
 				}
+			}
+			if(found == 1) {
+				break;
 			}
 		}
 		return ans;

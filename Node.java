@@ -15,4 +15,8 @@ public class Node{
 		this.startIndex2  = startIndex2;
 		this.endIndex2    = endIndex2;
 	} 
+	
+	public String toString() {
+		return "{"+strandIndex1+", "+startIndex1+", "+endIndex1+", "+strandIndex2+", "+startIndex2+", "+endIndex2+" }";
+	}
 }
